@@ -7,12 +7,24 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("\nIngrese la cantidad de estudiantes: ");
+        while (!sc.hasNextInt()) {
+                System.err.println("Error: Debe Ingresar un numero.");
+                sc.next();
+                System.out.print("\nIngrese la cantidad de estudiantes: ");
+
+            }
         int estudiantes = sc.nextInt();
         sc.nextLine();
 
         List<String> listaEstudiantes = new ArrayList<>();
         for (int i = 0; i < estudiantes; i++) {
             System.out.print("Ingrese el nombre del estudiante " + (i + 1) + ": ");
+            while (sc.hasNextInt() || sc.hasNextDouble()) {
+                System.err.println("Error: Debe Ingresar un Nombre.");
+                sc.next();
+                System.out.print("Ingrese el nombre del estudiante " + (i + 1) + ": ");
+
+            }
             String nombre = sc.nextLine();
             listaEstudiantes.add(nombre);
         }
@@ -59,7 +71,6 @@ public class Main {
 
                 case 3:
                     boolean buscarOtro;
-
                     do {
                         System.out.println("\nIngrese el nombre del estudiante que desea buscar: ");
                         String nombreBusqueda = sc.nextLine();
